@@ -15,7 +15,7 @@ save_dir_path = current_dir + "/" + save_dir
 
 def download_all_images():
    
-    if not os.path.isdir(save_dir):
+    if not os.path.isdir(save_dir_path):
         os.mkdir(save_dir_path)
     
     urls = []
@@ -26,7 +26,7 @@ def download_all_images():
     for name, url in zip(names, urls):
         print("Downloading", "http://", url)
         r = requests.get('https:' + url)
-        file_path = save_dir_path + '/' + name + 'jpeg'
+        file_path = save_dir_path + '/' + name + '.jpeg'
         with open(file_path, 'wb') as f:
             for chunk in r.iter_content(chunk_size = 1024):
                 f.write(chunk)
